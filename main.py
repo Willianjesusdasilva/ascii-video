@@ -12,10 +12,8 @@ def img_to_ascii(image):
     ASCII_CHARS = ["@", "#", "S", "%", "?", "*", "+", ";", ":", ",", "."]
     height, width = image.shape
     height = height//3
-    width = width//3
-    ratio = height/width
-    new_height = int(width * ratio)
-    image_resized = cv2.resize(image, (width, new_height)) 
+    width = width//2
+    image_resized = cv2.resize(image, (width, height)) 
     buff = StringIO()
     for line in image_resized:
         buff.write("".join([ASCII_CHARS[pixel//25] for pixel in line])+"\n")
